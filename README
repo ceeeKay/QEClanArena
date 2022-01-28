@@ -1,0 +1,572 @@
+Port of Clan Arena 1.13 by Mungo into Quake Enhanced
+
+-----
+
+Title    : Clan Arena Server Code
+Filename : clanarena13.zip
+Version  : 1.3
+Date     : 3-26-98
+Author   : Mungo
+Email    : bml@netwiz.net
+Webpage  : http://www.planetquake.com/servers/arena
+---------------------------------------------------
+
+                                PlanetQuake's
+                     Clan Arena mod v1.3 for Net Quake
+                     ---------------------------------
+
+Clan arena is like clanring or qwring for the most part. You join a server,
+"ready up", and once everybody is set to a team, the match begins.
+
+************
+New for v1.3
+************
+
+        - fixed menus bug
+        - fixed "grenade from a dead teammate damages you on teamplay 1" bug
+        - fixed "getting stuck in platform" bug
+        - fixed status line in trackcam
+        - added teamplay 4
+          with teamplay 4, you cannot damage a teammate's health OR armor,
+          this includes damage done to yourself
+
+for v1.2
+
+        - new menus option
+          see the section called "menus"
+        - new setup command
+          see the section called "the setup command"
+        - toggle-able countdown centerprint
+        - new fullteams option
+
+for v1.1
+
+        - new "pickup" command
+        - in track cam, your armor and health match the armor and health
+          of the person you're tracking
+        - settable auto-pushlatency setting for track cam
+          see "pl"
+        - settable status-bar size
+          see "sbar"
+        - "crush" bug fixed
+        - All varaibles but "teams" and "rounds" can be set between rounds
+          instead of between entire series
+        - Server admins can set up their server to be a "pickup" server
+          see the sections called "Pickup Server" and "Server Flags"
+
+
+*****
+Menus
+*****
+
+Menus are a new way for people to quickly and easily set up team games with
+clan arena.  When the server is in competition or round-robin modes, each
+player is given a menu listing the teams that they can join.  When they
+select a team from the menu, their colors are automatically set and they
+become a member of the team.  While waiting for the match to begin, they're
+given a second menu which lets them pick a shirt color or uncommit.
+Also, if everyone but one person is "ready", the name of the person who's
+holding things up is given to everone.
+
+To choose an option from the menu, either hit the number key corresponding
+to the option number, or type the number in at the console.
+
+Menus are enabled by the server admin with the server flags.
+
+
+*****************
+The setup command
+*****************
+
+The setup command is a quick and easy way to set up a match between teams.
+When you type the "setup" command, the first thing that happens is a voting
+starts to give you admin privileges.  Alternatively, you can become admin on
+your own with the "admin" command.  Once you are admin, you are taken through
+a series of menus that will configure the game.
+As an example we will assume that you want to set up a 4on4 on dm3.  On the
+first menu, when it asks how many teams, you would hit 2.  The second menu
+asks how many players per team, you would enter 4 here.  The third menu
+asks how many rounds to play.  For the example, you would hit 4 to choose
+best of 9 rounds.  The next menu asks if you want "fullteams" enabled or not.
+For more information about what "fullteams" does, see the commands section.
+For the example you would hit 1 for yes.  Finally, on the last menu, you
+choose option 2, for "dm3".  Once you are taken to dm3, the setup is complete.
+All you have to do now is have each person join a team, and once everyone
+has committed to a team, the match will start.
+
+
+*************
+Pickup Server
+*************
+
+When the "pickup" server flag is on, the server will run in "pickup" mode.
+In "pickup" mode, the the mod behaves differently in the following ways:
+
+        - The mod is always in "competition" mode
+
+        - The "modeset" and "lock" commands are disabled
+
+        - There's no server timeout
+
+        - The "autolock" server flag still works, since it's the
+          server admin's decision whether or not the server be locked
+
+
+************
+Server Flags
+************
+
+The server flags are set in the "temp1" console variable, as a bitmask.
+The values of the bits and the flags are given here:
+Bit    Value    Meaning         Description
+-------------------------------------------
+ 0       1      Sounds          If set, Street Fighter sounds are used instead
+                                of the MK sounds
+ 1       2      Autolock        If set, auotlock is enabled
+ 2       4      Pickup          If set, the server runs in "pickup" mode
+ 3       8      Menus           If set, menus are enabled
+ 4      16      Fullteams       If set, fullteams is on by default
+
+To get the value for "temp1", add the value of the flags you want together.
+For example, if you want to run a pickup server with menus off, and fullteams
+on, the value for "temp1" would be 20 (4+16).  If you wanted to run a server
+with Street Figher sounds, menus, and in pickup mode, the value for "temp1"
+would be 13 (1+4+8).
+The RECOMMENDED value for "temp1" is 12 (pickup on, menus on).
+
+sounds
+~~~~~~
+
+The clan arena mod may be configured to use two sets of sounds. If you prefer
+the Street Fighter sounds, set the server variable "sounds" to 0. If you
+prefer the Mortal Kombat sounds, set "sounds" to 1. The Mortal Kombat sounds
+are used by default.
+
+autolock
+~~~~~~~~
+
+If "autolock" is set to 1, then the server automatically locks iself before
+each series begins, and unlocks after each series.  If set to 0, autolocking
+is disabled.
+
+menus
+~~~~~
+
+If set to 0, this will disable the menus.  If 1, this will enable menus.
+See the section called "menus" for a description.
+
+pickup
+~~~~~~
+
+If set to 0, the server behaves as normal.  If set to 1, the server will
+run in "pickup" mode.
+See the section called "pickup server" for a description.
+
+fullteams
+~~~~~~~~~
+
+If set to 0, "fullteams" is by default off.  If 1, it's on by default.
+"fullteams" can still be changed by an admin.
+
+
+************
+Server Setup
+************
+
+To set up a Clan Arena server,
+1. Extract the files in the caserver.zip into a 'quake\carena' directory.
+
+2. Copy the pak0.pak from your Final Arena (quake\arena) directory
+into your Clan Arena directory (quake\carena).
+The Final Arena client pak is required to run a Clan Arena server (it includes
+maps and sounds). It is available from: http://www.planetquake.com/servers/arena
+
+3. Set the admin code using the 'caadmin.exe' utility (this is a win32 executable, for
+unix machines, you will need to run this on a 95/NT machine, and copy the progs.dat).
+
+4. Read the section called "Server Flags" and decide what options you want
+
+5. Start the server with a command line like:
+'winquake -dedicated 16 -game carena +temp1 12 +deathmatch 1 +map dm3'
+
+NOTE: Clients must connect with a '-game arena' parameter.
+
+
+********
+Features
+********
+
+Modes
+~~~~~
+
+There are three different modes for clan arena:
+
+- Normal Mode
+
+Normal mode is where there are no teams and there is just one line of people.
+People fight, and the winner fights the next player in line. When you lose a
+fight, you go to the end of the line.  "players" controls how many people are
+put into the arena at once.  If "players" is set to 3, 3 people would play
+a 1on1on1.  If set to 4, it would be a 4 way.
+
+- Competition Mode
+
+A certain number of players are chosen from each team, determined by the
+"players" setting, and placed into the arena.  When someone dies, someone
+from his team replaces him (if there is someone left to replace him), and
+everyone in the arena keeps their armor/health.  Once all but one team has
+been eliminated, the round ends.  By default, a best of 9 rounds is played.
+("rounds" setting controls the number of rounds played).  A different player
+from each team starts the next round.  Once the series of rounds ends, the
+team with the most wins in given the victory.
+
+- Round Robin Mode
+
+Only one player from each team is put into the arena.  As soon as the fight
+ends the winner is teleported out to make room for the next set of players.
+The series ends when everyone on a team has had a chance to play against
+everyone else.  Keep in mind that this can create a large number of matches.
+For example, a 2-team 4on4 would need to play 16 matches.  A 3-team 4on4on4
+would be 64 matches long.  This mode should probably only be used for clans
+interested in holding "official" matches, with 4 players to a team.
+NOTE:  This mode forces "players" to 1, and "rounds" is set automatically
+
+Number of Players
+~~~~~~~~~~~~~~~~~
+
+In Clan Arena, the number of players to be put into the arena is fully
+configurable.  For example, if "players" is set to "3" on normal arena,
+3 people would be put into the arena, making for a 1on1on1, with the last
+one standing the winner.
+In competition mode, if "players" is set to "2", two players from every
+team are put into the arena at once.  For example, if there are 2 teams,
+4 people would be put into the arena, making for a 2on2.
+
+Number of Teams
+~~~~~~~~~~~~~~~
+
+The number of teams participating at once can be anywhere between 2 and 4.
+This controls the MAXIMUM number of teams allowed.  The minimum to start
+a game is always 2.
+
+Arena on Any Map
+~~~~~~~~~~~~~~~~
+
+Clan Arena doesnt require an arena map to be played.  Clan Arena works
+on id maps.  In fact, it can also work on any map, as long as the map
+name is specified in the server's localinfo as an "id-style" map.
+Check the sample server.cfg for an example of how to do this.
+
+Spectators on id Maps
+~~~~~~~~~~~~~~~~~~~~~
+
+All non-players are non-solid spectators who can not be seen or heard. All
+spectators have a null team value and are color 0 (white). A non-solid
+spectator cannot move through a solid, including other players.
+While you are a spectator, you can either walk around on your own,
+or use the tracking camera. To use the tracking camera, press the attack
+button, and then use the jump button to track the various players. If you
+want to exit the track cam mode, press the attack button again.
+
+********
+Commands
+********
+
+settings
+~~~~~~~~
+
+This command is like modstatus in qwring, it shows the current settings of
+the clan arena mod. Each setting can be changed by an admin using the
+admin commands
+
+atype           - armor type. 1 = red armor, 2 = yellow armor,
+                              3 = green armor, 4 = no armor
+
+armor		- how much armor you start with.
+health		- how much health you start with.
+
+(NOTE: an ammo value of 999 specifies unlimited ammo of that type of ammo.)
+
+shells		- number of shells you start with. 
+nails		- number of nails you start with.
+rockets		- number of rockets you start with.
+cells		- number of cells you start with.
+
+teamplay        - standard teamplay variable.
+players		- number of players from each team to fight at the same time.
+NOTE:           There are two different players settings.  One is for normal
+                mode and defaults to 2, the other is for Competition mode and
+                defaults to 4.
+teams           - maximum number of teams.
+
+mode            - current mode of server.
+                  (Normal, Competition, or Round Robin)
+fullteams       - if "on", the mod will wait for all the teams to fill up
+                  before starting the match, as opposed to starting the match
+                  when every person has "readied" regarldless of if the teams
+                  are uneven
+centerprint     - if "on", you will get a countdown printed to the center of
+                  the screen and "FIGHT!" when the match has begun.
+
+
+playerlist
+~~~~~~~~~~
+
+The playerlist command shows which team each player belongs to. If the team
+field is blank for a player, it means that player is not on a team.
+Thre are 4 fields, labeled "F D H S".  They mean, "fired", "direct hits",
+"hits", "self-inflicted", respectively, and are a total accout of all the
+rockets the player has fired.  These numbers are reset at the beginning of
+each series.
+
+yes
+~~~
+
+This command is used to vote yes for an election to admin.
+
+no
+~~
+
+This command is used to vote no for an election to admin.
+
+listmaps
+~~~~~~~~
+
+Lists the maps in the map loop.  The map loop is coded into the progs with
+the "vars.qc" file.
+
+elect
+~~~~~
+
+Used by a normal player to become admin.  During the voting time, a person
+votes with "yes" and "no". The voting is controlled with the variables
+"votepct" and "votetime".  "votepct" controls the percentage of votes that
+must be "yes" in order for the person to become an admin.  For example, if
+there are 6 people on the server, and votecpt is "50", there would need to
+be at least 3 "yes" votes in order for the person to be admin'd.
+The variable "votetime" is the number of seconds the voting lasts.
+Default is 60.  If "votepct" is not set or is 0, voting is disabled.
+
+These variables are coded into the progs with the "vars.qc" file.
+
+ready
+~~~~~
+
+Adds you to the team you have specified, or enables the team you have
+specified.  To specify your team, use the "team" console command.
+If you join a team that's already been created, your colors will be changed
+to match the team colors.
+
+This command is disabled on servers using the menus.
+
+admin
+~~~~~
+
+Use this command to become an admin if you enter the correct admin code. The
+admin code is four digits, and you enter one digit at a time.
+
+commands
+~~~~~~~~
+
+List available commands, and the impulse for the command.
+
+notready
+~~~~~~~~
+
+Removes you from the team you have specified, and if you were the only player
+on your team, "notready" clears the old team.
+
+scores
+~~~~~~
+
+Only works in either Competition or Round Robin modes.  It shows the teams
+participating in the current series and how many wins/losses/forfeits they
+have.
+
+cprint
+~~~~~~
+
+Toggles the centerprinted countdown on or off.
+
+sbup, sbdown
+~~~~~~~~~~~~
+
+Use these to increase/decrease the resolution of the status bar seen in
+trackcam mode.  DO NOT increase the size of the status bar beyond the
+resolution of your screen.  At its lowest setting, the status bar is turned
+off.
+
+setup
+~~~~~
+
+Gives a series of menus to help setup a match quickly.  Explained fully
+in the section called "the setup command"
+
+
+**************
+Admin Commands
+**************
+
+pickup
+~~~~~~
+
+Clears the teams and colors for everyone on a server.  Can only be used
+in Competition or Round-Robin modes when a series is not being played.
+It clears any teams already created so you will need to set your team
+and type "ready" again.
+Useful to help set up a pickup game.
+
+modeset
+~~~~~~~
+
+This command swicthes the mode of the clan arena mod.
+If the server is running in "pickup" mode, this command is disabled.
+
+warp
+~~~~
+
+This command is used to change maps. Enter one number at a time.
+If you want to choose an id map, enter the episode number for the
+first digit, the second digit is the level number.  Deathmatch maps
+are chosen with 5, episode 1 with 6, episode 2 with 7, and so on.
+For example, to choose dm6, enter:
+warp
+5
+6
+
+To choose e1m2, enter:
+warp
+6
+2
+
+start map is chosen with "58", end with "99"
+
+reset
+~~~~~
+
+Use this command to reset the mod.
+
+force
+~~~~~
+
+This command is used to start a series even though all players have not
+readied up.  If "fullteams" is on and the teams are uneven, you cant use
+"force" to start anyway.
+
+kick
+~~~~
+
+When you enter this command, a list of players and their associated player
+numbers will be displayed. To remove a player from the server, enter the
+number of the player you wish to kick. Remember to enter one digit at a time.
+
+lock
+~~~~
+
+This command toggles whether or not the server is locked. When the server is
+locked, no players are allowed to join the server.  See: autolock.  If the
+server is locked manually with this command, autolock will be disabled.
+The server automatically unlocks if there are no more players on the server,
+or the level is changed.
+If the server is running in "pickup" mode, this command is disabled.
+
+fullteams
+~~~~~~~~~
+
+Toggles the "fullteams" setting on or off.  With fullteams on, the mod
+waits for all teams to fill up before starting a match, with it off, the
+match starts as soon as everyone on the server has readied.
+For example, if you were trying to set up a 4on4 on dm3.  If 5 people
+join the server, 4 of whom create team A, the last creating team B, the
+match starts with 4 people on team A against one person on team B.  To
+get around this problem, enable fullteams, and set "teams" to 2 and "players"
+to 4.  This way the server will not start the match until there are 4
+people apiece on 2 different teams.
+
+sg, ssg, ng, sng, gl, rl, lg
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use these to toggle on/off a specific weapon
+
+tmset
+~~~~~
+
+Use this to cycle between the different teamplay settings.
+
+tmup, tmdown
+~~~~~~~~~~~~
+
+Use these to increase/decrease the number of the "teams" setting.
+
+atset
+~~~~~
+
+Use this to cylce between the different "atype" (armor type) settings.
+
+amup, amdown
+~~~~~~~~~~~~
+
+Use these to increase/decrease the armor setting.
+
+hup, hdown
+~~~~~~~~~~
+
+Use these to increase/decrease the health setting.
+
+plup, pldown
+~~~~~~~~~~~~
+
+Use these to increase/decrease the number of the "players" setting.
+
+rdup, rddown
+~~~~~~~~~~~~
+
+Use these to increase/decrease the number of the "rounds" setting.
+
+shells, nails, rockets, cells
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use these to cycle between the different values for each type of ammo.
+The values are 0, 30, 100, 700(infinite).
+
+
+
+
+*******
+Credits
+*******
+
+Authors
+~~~~~~~
+
+Mungo   (bml@netwiz.net)        Coding
+eof     (apathy@cw.umd.edu)     Server admin, ideas, testing, docs
+
+Thank yous
+~~~~~~~~~~
+
+Gemini:                 idea of arena on id maps
+Sketch:                 original trackcam idea
+crt:                    docs help, fullteams suggestion
+4u2c:                   menus idea, teamplay 4 idea, server admin and testing
+[1]protocol:            server admin and testing
+hilander:               server admin and testing
+Phazer, TvAddict:       suggestions
+Zoid:                   street fighter sound effects
+Angoris and Gemini:     original arena conecpt
+SS|NiOXiN:              original arena map
+
+Testers
+~~~~~~~
+
+clan SS:                NiOXiN, Soylent, Rush, BodyCount, MicroMegas, Grunt
+clan EW:                Artemis, Glock, Sketch, Monk3y, Cloud, Nitro, Nova
+clan EG:                Drakken, Pistdov
+clan WD:                RCade
+clan Cluck:             Mib, Roadwar
+clan FFF:               Psy, DemonX
+Phazer, TvAddict, Nacho, P00p, Peaches, Hawk'D, Tess[eh]
+
+NOTE:  This list doesnt have all the names, since we couldnt possibly
+       remember them all.  A big thanks goes to all the testers, and
+       sorry if we missed your name here!
