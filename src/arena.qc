@@ -1933,6 +1933,50 @@ void() AA_Check_Map =
                 AA_Idmap = 1;
         } else if (mapname == "end") {
                 AA_Idmap = 1;
+        } else if (mapname == "test/mals_combatbox") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_aiming") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_barrierjump") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_button") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_characters") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_door") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_invis") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_laser") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_nodes") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_obstacles") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_powerup") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_rockets") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_shadow") {
+                AA_Idmap = 1;
+        } else if (mapname == "test/test_walkoffledge") {
+                AA_Idmap = 1;
+        } else if (mapname == "horde1") {
+                AA_Idmap = 1;
+        } else if (mapname == "horde2") {
+                AA_Idmap = 1;
+        } else if (mapname == "horde3") {
+                AA_Idmap = 1;
+        } else if (mapname == "horde4") {
+                AA_Idmap = 1;
+        } else if (mapname == "mgdm1") {
+                AA_Idmap = 1;
+        } else if (mapname == "mgdm2") {
+                AA_Idmap = 1;
+        } else if (mapname == "mgdm3") {
+                AA_Idmap = 1;
+        } else if (mapname == "mdgm4") {
+                AA_Idmap = 1;
         }
 
 //        if (!AA_Idmap) {
@@ -2368,7 +2412,7 @@ void() AA_Status_Think =
         } else if (self.ideal_yaw == 35) {
                 centerprint(self.owner, "Should the mod wait until\nall teams are full\nbefore starting the match?\n\n1. YES\n2. NO\n\n3 cancels");
         } else if (self.ideal_yaw == 39) {
-                centerprint(self.owner, "€‚\nWelcome to Clan Arena v1.3\nwritten by Íõîçï\n(bml@netwiz.net)\n\nhttp://www.planetquake.com/servers/arena\n\nHave you played\n…Òïãëåô Áòåîá ²…\nlately?\n€‚\n");
+                centerprint(self.owner, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\nWelcome to Clan Arena v1.3\nwritten by ï¿½ï¿½ï¿½ï¿½ï¿½\n(bml@netwiz.net)\n\nhttp://www.planetquake.com/servers/arena\n\nHave you played\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½\nlately?\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
         }
 
         AA_Status_Bar(self.owner);
