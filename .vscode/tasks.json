@@ -32,10 +32,7 @@
             "type": "shell",
             "command": "cd src; fteqcc64; cd ..; cp progs.dat $Env:homepath/Saved` Games/Nightdive` Studios/Quake/mg1/",
             "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         },
         {
             "label": "compile and copy progs.dat to \\Steam\\steamapps\\common\\Quake\\rerelease\\id1",

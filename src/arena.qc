@@ -1869,6 +1869,10 @@ void() AA_Check_Map =
                 AA_Idmap = 1;
         } else if (mapname == "dm6") {
                 AA_Idmap = 1;
+        } else if (mapname == "dm7") {
+                AA_Idmap = 1;
+        } else if (mapname == "dm8") {
+                AA_Idmap = 1;
         } else if (mapname == "e1m1") {
                 AA_Idmap = 1;
         } else if (mapname == "e1m2") {
@@ -3105,11 +3109,12 @@ void() AA_Set_Vars =
                 AA_Num_Players = AA_V_Players;
         }
         AA_Num_Teams = AA_V_Teams;
-        if (AA_Game_Mode != AA_GM_NORMAL) {
-                if (AA_V_Teamplay == 0) {
-                        AA_V_Teamplay = 4;
-                }
-        }
+        // CK: don't force teamplay 4 for the moment as it seems to be broken (in QE?)
+        // if (AA_Game_Mode != AA_GM_NORMAL) {
+        //         if (AA_V_Teamplay == 0) {
+        //                 AA_V_Teamplay = 4;
+        //         }
+        // }
         ef = cvar("teamplay");
         if(ef != AA_V_Teamplay) {
                 foos = ftos(AA_V_Teamplay);
@@ -4682,11 +4687,12 @@ void() AA_Set_Vars2 =
         } else if (AA_Game_Mode == AA_GM_NORMAL) {
                 AA_Num_Players = AA_V_Players;
         }
-        if (AA_Game_Mode != AA_GM_NORMAL) {
-                if (AA_V_Teamplay == 0) {
-                        AA_V_Teamplay = 4;
-                }
-        }
+        // CK: don't force teamplay 4 for the moment as it seems to be broken (in QE?)
+        // if (AA_Game_Mode != AA_GM_NORMAL) {
+        //         if (AA_V_Teamplay == 0) {
+        //                 AA_V_Teamplay = 4;
+        //         }
+        // }
         ef = cvar("teamplay");
         if(ef != AA_V_Teamplay) {
                 foos = ftos(AA_V_Teamplay);
