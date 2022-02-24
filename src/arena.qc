@@ -2416,7 +2416,7 @@ void() AA_Status_Think =
         } else if (self.ideal_yaw == 35) {
                 centerprint(self.owner, "Should the mod wait until\nall teams are full\nbefore starting the match?\n\n1. YES\n2. NO\n\n3 cancels");
         } else if (self.ideal_yaw == 39) {
-                centerprint(self.owner, "Β€ΒΒΒΒΒΒΒΒΒΒΒΒΒΒΒ‚\nWelcome to Clan Arena v1.3\nwritten by ΓΓµΓ®Γ§Γ―\n(bml@netwiz.net)\n\nhttp://www.planetquake.com/servers/arena\n\nHave you played\nΒ…Γ’Γ―Γ£Γ«Γ¥Γ΄ ΓΓ²Γ¥Γ®Γ΅ Β²Β…\nlately?\nΒ€ΒΒΒΒΒΒΒΒΒΒΒΒΒΒΒ‚\n");
+                centerprint(self.owner, "€‚\nWelcome to Clan Arena v1.3\nwritten by Νυξηο\n(bml@netwiz.net)\n\nhttp://www.planetquake.com/servers/arena\n\nHave you played\n…Òογλετ Αςεξα ²…\nlately?\n€‚\n");
         }
 
         AA_Status_Bar(self.owner);
@@ -3109,12 +3109,11 @@ void() AA_Set_Vars =
                 AA_Num_Players = AA_V_Players;
         }
         AA_Num_Teams = AA_V_Teams;
-        // CK: don't force teamplay 4 for the moment as it seems to be broken (in QE?)
-        // if (AA_Game_Mode != AA_GM_NORMAL) {
-        //         if (AA_V_Teamplay == 0) {
-        //                 AA_V_Teamplay = 4;
-        //         }
-        // }
+        if (AA_Game_Mode != AA_GM_NORMAL) {
+                if (AA_V_Teamplay == 0) {
+                        AA_V_Teamplay = 4;
+                }
+        }
         ef = cvar("teamplay");
         if(ef != AA_V_Teamplay) {
                 foos = ftos(AA_V_Teamplay);
@@ -4687,12 +4686,11 @@ void() AA_Set_Vars2 =
         } else if (AA_Game_Mode == AA_GM_NORMAL) {
                 AA_Num_Players = AA_V_Players;
         }
-        // CK: don't force teamplay 4 for the moment as it seems to be broken (in QE?)
-        // if (AA_Game_Mode != AA_GM_NORMAL) {
-        //         if (AA_V_Teamplay == 0) {
-        //                 AA_V_Teamplay = 4;
-        //         }
-        // }
+        if (AA_Game_Mode != AA_GM_NORMAL) {
+                if (AA_V_Teamplay == 0) {
+                        AA_V_Teamplay = 4;
+                }
+        }
         ef = cvar("teamplay");
         if(ef != AA_V_Teamplay) {
                 foos = ftos(AA_V_Teamplay);
