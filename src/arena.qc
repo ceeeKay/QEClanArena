@@ -19,6 +19,11 @@ void() AA_Arena_Init =
         }
 
         AA_Got_Change_Parms = 0;
+
+        // CK: Must be done before AA_Set_Defaults() or else
+        // it defaults to 0 (invalid mode) and sets teamplay to 4
+        AA_Game_Mode = AA_GM_NORMAL;
+
         AA_Set_Defaults();
         AA_Num_Players = 2;
         AA_Min_Players = 2;
@@ -33,7 +38,6 @@ void() AA_Arena_Init =
         AA_Game_State = AA_GAME_WAIT;
         AA_Grace = 0;
         AA_Comp_State = AA_COMP_WAIT;
-        AA_Game_Mode = AA_GM_NORMAL;
 
         AA_Idle_Val = 15;
         AA_Idle_Time = -1;
