@@ -2416,7 +2416,7 @@ void() AA_Status_Think =
         } else if (self.ideal_yaw == 35) {
                 centerprint(self.owner, "Should the mod wait until\nall teams are full\nbefore starting the match?\n\n1. YES\n2. NO\n\n3 cancels");
         } else if (self.ideal_yaw == 39) {
-                centerprint(self.owner, "€‚\nWelcome to Clan Arena v1.3\nwritten by Νυξηο\n(bml@netwiz.net)\n\nhttp://www.planetquake.com/servers/arena\n\nHave you played\n…Òογλετ Αςεξα ²…\nlately?\n€‚\n");
+                centerprint(self.owner, "----------------\nWelcome to QE Clan Arena v1.3\nwritten by Mungo\nupdated for QE by CK\n\nhttps://github.com/ceeeKay/QEClanArena\n\nHave you joined the Discord yet?\nquakeqe.com?\n----------------\n");
         }
 
         AA_Status_Bar(self.owner);

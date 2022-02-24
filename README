@@ -5,10 +5,15 @@ Supports horde and "test" maps in QE- see server.cfg for map names.
 To get horde maps to work, you may need to extract the map files from
 mg1/pak0.pak into id1/maps on the SERVER side (clients may find the maps).
 
+Original files and sources can be found on planetquake mirrors, e.g.
+https://www.quaddicted.com/files/mirrors/ftp.planetquake.com/servers/arena
+
+Server and source files: casrv13.zip
+Client files (including maps and 3/2/1/Fight/Flawless sounds): farena12.zip
+
 ------------------------------------------------------------------------------
 Original clanarena-nq.txt
 ------------------------------------------------------------------------------
-
 
 Title    : Clan Arena Server Code
 Filename : clanarena13.zip
