@@ -2,14 +2,25 @@ Port of Clan Arena 1.13 by Mungo into Quake Enhanced
 
 Supports horde and "test" maps in QE- see server.cfg for map names.
 
-To get horde maps to work, you may need to extract the map files from
-mg1/pak0.pak into id1/maps on the SERVER side (clients may find the maps).
-
 Original files and sources can be found on planetquake mirrors, e.g.
 https://www.quaddicted.com/files/mirrors/ftp.planetquake.com/servers/arena
 
 Server and source files: casrv13.zip
 Client files (including maps and 3/2/1/Fight/Flawless sounds): farena12.zip
+
+QE-specific notes:
+- Clients need to connect with `cl_filterstuffcmd 0`
+- You probably want to set `scr_maxlines 20` to see the output of various command aliases
+- Hard-coded admin code is 9194, change in var.qc and recompile (in the future this will be a variable)
+- Edit vars.qc to change map list/rotation for warp command (not sure if this is easily changed)
+- Horde maps may or may not work properly (more research needed)
+
+Server tips:
+- Set "samelevel 1" on server to not change levels when fraglimit is hit
+- The server will default to running in 1v1 Rocket Arena mode, no config required
+- If you want to run in Clan Arena (competition mode), recommend setting "temp1 28" in
+  server console before starting a map to enable client menus, pickup game mode, and fullteams
+- Use "plup" and "pldown" to change number of players per team (default is 4)
 
 ------------------------------------------------------------------------------
 Original clanarena-nq.txt
