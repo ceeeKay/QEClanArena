@@ -2500,7 +2500,7 @@ void() AA_Status_Think =
                                 foos5 = "\n\nNONE\n\n";
                         }
 
-                        centerprint5(self.owner, "Choose your shirt color:\n\n", foos5, "\n\nPress 5 to uncommit\n\n", foos3, foos4);
+                        centerprint5(self.owner, "Waiting for other players to be ready...\n\nChoose your shirt color while you wait:\n\n", foos5, "\n\nPress 5 to uncommit\n\n", foos3, foos4);
                 }
         }
 
