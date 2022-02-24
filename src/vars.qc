@@ -1,3 +1,4 @@
+// Change this and recompile to change admin code
 float AA_D_Admin_Code = 9194;
 float AA_D_Vote_Pct = 50;
 float AA_D_Vote_Time = 60;
@@ -14,16 +15,17 @@ float AA_D_Players2 = 4;
 float AA_D_Teams = 2;
 float AA_D_Rounds = 9;
 
+// Change these and recompile to change default maps/order
 string(float num) AA_Get_Map_For_Num =
 {
 // normal maps
-        if (num == 0) return "dm6";
+        if (num == 0) return "dm1";
         if (num == 1) return "dm2";
-        if (num == 2) return "dm3";
-        if (num == 3) return "dm1";
+        if (num == 2) return "dm6";
+        if (num == 3) return "dm3";
         if (num == 4) return "e1m2";
-        if (num == 5) return "";
-        if (num == 6) return "";
+        if (num == 5) return "test/test_characters";
+        if (num == 6) return "test/mals_combatbox";
         if (num == 7) return "";
 // custom maps
         if (num == 8) return "";
