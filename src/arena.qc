@@ -88,7 +88,8 @@ void() AA_Arena_Init =
                 AA_Fullteams = 1;
         }
 //arena 3/6
-        localcmd("sv_aim 1\n");
+        // Not a command in QE
+        // localcmd("sv_aim 1\n");
 };
 
 void() AA_Arena_Think =

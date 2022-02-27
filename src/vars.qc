@@ -24,18 +24,18 @@ string(float num) AA_Get_Map_For_Num =
         if (num == 2) return "dm6";
         if (num == 3) return "dm3";
         if (num == 4) return "e1m2";
-        if (num == 5) return "test/test_characters";
-        if (num == 6) return "test/mals_combatbox";
-        if (num == 7) return "";
+        if (num == 5) return "end";
+        if (num == 6) return "test/test_characters";
+        if (num == 7) return "test/mals_combatbox";
+        if (num == 8) return "horde1";
 // custom maps
-        if (num == 8) return "";
-        if (num == 9) return "";
-        if (num == 10) return "";
-        if (num == 11) return "";
-        if (num == 12) return "";
-        if (num == 13) return "";
-        if (num == 14) return "";
-        if (num == 15) return "";
+        if (num == 9) return "horde2";
+        if (num == 10) return "horde3";
+        if (num == 11) return "horde4";
+        if (num == 12) return "mgdm1";
+        if (num == 13) return "mgdm2";
+        if (num == 14) return "mgdm3";
+        if (num == 15) return "mgdm4";
         return(string_null);
 };
 
