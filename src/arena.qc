@@ -79,7 +79,8 @@ void() AA_Arena_Init =
                 AA_Unready_All();
                 AA_Respawn_All();
                 AA_Show_Commands();
-                bprint("Mode is now Competition\n");
+                // Crashes QE with illegible svc_print error
+                // bprint("Mode is now Competition\n");
         }
         if (ef & 8) {
                 AA_Menus = 1;
@@ -939,12 +940,18 @@ void() AA_Impulses =
                    AA_Comp_State == AA_COMP_WAIT) {
                 ef = self.impulse;
                 if(ef >= 40) ef = ef - 40;
+                // Map 1, 2, 4, 6 on controller D-pad to 1, 2, 3, 4
+                if (ef == 4) // D-pad right (quickswitch_right)
+                        ef = 3;
+                if (ef == 6) // D-pad down (quickswitch_down)
+                        ef = 4;
                 if (!(self.goalentity.fly_sound)) { // joining a team
                         if (ef <= AA_Num_Teams) {
                                 AA_Set_Team_Menus(self, ef);
                         }
                 } else { // set shirt color, etc.
-                        if (ef == 5) {
+                        // Change 5->4 to make equivalent to 1-4 options for team choice
+                        if (ef == 4) {
                                 AA_Not_Ready_Command();
                                 return;
                         }
@@ -2452,10 +2459,10 @@ void() AA_Status_Think =
                         foos3 = "\n";
                         foos4 = "\n";
                         if (AA_Num_Teams >= 3) {
-                                foos3 = "3. Yellow\n";
+                                foos3 = "4 or D-pad right: Yellow\n";
                         }
                         if (AA_Num_Teams >= 4) {
-                                foos4 = "4. Green\n";
+                                foos4 = "6 or D-pad down: Green\n";
                         }
                         col = 100;
                         e = AA_Specs.aiment;
@@ -2468,7 +2475,7 @@ void() AA_Status_Think =
                                 }
                                 e = e.aiment;
                         }
-                        centerprint6(self.owner, "Please choose a team\n\n1. Blue\n2. Red\n", foos3, foos4, "\n\nTeam ", foos5, " needs more people\n");
+                        centerprint6(self.owner, "Please choose a team\n\n1 or D-pad left: Blue\n2 or D-pad up: Red\n", foos3, foos4, "\n\nTeam ", foos5, " needs more people\n");
                 } else {
                         e = find(world, classname, "player");
                         col = 0;
@@ -2490,18 +2497,18 @@ void() AA_Status_Think =
                         col = self.team - 1;
                         col = col & 15;
                         if (col == 13) {
-                                foos5 = "1. Blue\n2. Light Blue\n3. Green Blue\n";
+                                foos5 = "1 or D-pad left: Blue\n2 or D-pad up: Light Blue\n4 or D-pad right: Green Blue\n";
                         } else if (col == 4) {
-                                foos5 = "1. Red\n2. Peach\n3. Tan\n";
+                                foos5 = "1 or D-pad left: Red\n2 or D-pad up: Peach\n4 or D-pad right: Tan\n";
                         } else if (col == 12) {
-                                foos5 = "1. Yellow\n2.Dark Yellow\n3. Tan\n";
+                                foos5 = "1 or D-pad left: Yellow\n2 or D-pad up:Dark Yellow\n4 or D-pad right: Tan\n";
                         } else if (col == 3) {
-                                foos5 = "1. Green\n2. Purple\n3. Magenta\n";
+                                foos5 = "1 or D-pad left: Green\n2 or D-pad up: Purple\n4 or D-pad right: Magenta\n";
                         } else {
                                 foos5 = "\n\nNONE\n\n";
                         }
 
-                        centerprint5(self.owner, "Waiting for other players to be ready...\n\nChoose your shirt color while you wait:\n\n", foos5, "\n\nPress 5 to uncommit\n\n", foos3, foos4);
+                        centerprint5(self.owner, "Waiting for other players to be ready...\n\nChoose your shirt color while you wait:\n\n", foos5, "\n\nPress 6 or D-pad down to uncommit\n\n", foos3, foos4);
                 }
         }
 

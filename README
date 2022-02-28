@@ -8,22 +8,19 @@ https://www.quaddicted.com/files/mirrors/ftp.planetquake.com/servers/arena
 Server and source files: casrv13.zip
 Client files (including maps and 3/2/1/Fight/Flawless sounds): farena12.zip
 
-QE-specific notes:
-- There is an issue changing levels if menus are enabled (server kicks all clients), don't use menus
-- Unfortunately because of lack of menus, no console support (yet?) for Clan Arena mode
-
 Remote server administration:
 - Client: connect with `cl_filterstuffcmd 0` to get aliases registered
 - You probably want to set `scr_maxlines 20` to see the output of various command aliases
 - Hard-coded admin code is 9194, change in var.qc and recompile (in the future this will be a variable)
 - Edit vars.qc to change map list/rotation for warp command
 
-Server tips:
+Server hosting:
 - Recommend setting `samelevel 1` in console and manually switching maps for now
 - The server will default to running in 1v1 Rocket Arena mode, no config required
-- If you want to run in Clan Arena (competition mode), setting `temp1 4` in
-  server console before starting a map to enable pickup mode, or else use `admin` and `modeset`
+- If you want to run in Clan Arena (competition mode), setting `temp1 12` in
+  server console before starting a map to enable menus + pickup mode
 - Use "plup" and "pldown" to change number of players per team (default is 4)
+- Use "tmup" and "tmdown" to change the number of teams (default is 2)
 - To get horde maps working (highly recommended):
   + Copy ...\Steam\steamapps\common\Quake\rerelease\mg1\pak0.pak to %userprofile%\Saved Games\Nightdive Studios\Quake\mg1
   + Save QEClanArena's pak1.pak  to %userprofile%\Saved Games\Nightdive Studios\Quake\mg1
