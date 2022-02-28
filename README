@@ -19,6 +19,11 @@ Server hosting:
 - The server will default to running in 1v1 Rocket Arena mode, no config required
 - If you want to run in Clan Arena (competition mode), setting `temp1 12` in
   server console before starting a map to enable menus + pickup mode
+- If you just want menus enabled, but want to use `admin` and `modeset` to switch
+  between `normal` (RA) and `competition` (CA), use `temp1 8`.
+- If you are only going to run "id style" maps (i.e. deathmatch maps, not rocket arena),
+  add 64 to temp1 e.g. `temp1 76` on a menu+pickup server or `temp1 72` on a menu-enabled server
+  to allow loading custom maps without needing them added to arena.qc:AA_Check_Map()
 - Use "plup" and "pldown" to change number of players per team (default is 4)
 - Use "tmup" and "tmdown" to change the number of teams (default is 2)
 - To get horde maps working (highly recommended):

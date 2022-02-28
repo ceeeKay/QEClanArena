@@ -181,12 +181,7 @@ void() worldspawn =
 		cvar_set ("sv_gravity", "800");
 
 // custom map title
-	if (self.model == "maps/test/test_characters.bsp")
-		self.message = GetMapName("Big Box");
-	else if (self.model == "maps/test/mals_combatbox.bsp")
-		self.message = GetMapName("Mal's Combat Box");
-	else
-		self.message = GetMapName(self.message);
+	self.message = GetMapName(self.message);
 
 // the area based ambient sounds MUST be the first precache_sounds
 

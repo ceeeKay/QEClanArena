@@ -4,6 +4,7 @@
 
 #define FirstDefineMap(_bspname,_maptitle) if(mapname == ##_bspname && title == ##_maptitle) { return ##_maptitle" ("ModName")"; }
 #define DefineMap(_bspname,_maptitle) else FirstDefineMap(_bspname,_maptitle)
+#define OverrideDefineMap(_bspname,_maptitle) else if(mapname == ##_bspname) { return ##_maptitle" ("ModName")"; }
 
 string(string title) GetMapName =
 {
@@ -52,12 +53,45 @@ string(string title) GetMapName =
     DefineMap("e4m8","The Nameless City")
     DefineMap("end","Shub-Niggurath's Pit")
     DefineMap("start","Introduction")
-    DefineMap("test/mals_combatbox","Mal's Combat Box")
-    DefineMap("test/test_characters","Big Box")
+
+    // DOTM maps
+    DefineMap("hub","The Machine")
+    DefineMap("mge1m1","The Pain Drain")
+    DefineMap("mge1m2","The Wishing Well")
+    DefineMap("mge1m3","Sandy's Room")
+    DefineMap("mge2m1","Acid Sanctuary")
+    DefineMap("mge2m2","Fading Embers")
+    DefineMap("mge3m1","Down the Waste")
+    DefineMap("mge3m2","Hell or Dark Water")
+    DefineMap("mge4m1","Grave Machine")
+    DefineMap("mge4m2","A Grave Mistake")
+    DefineMap("mge5m1","Nazard Terminal")
+    DefineMap("mge5m2","Too Deep, Too Greedy")
+    DefineMap("mgend","Chthon's Vengeance")
+    DefineMap("start","Introduction")
+    DefineMap("mgdm1","Art of the Condemned")
+    DefineMap("mgdm2","The Bad Space")
+    DefineMap("mgdm3","The Mustard Factory")
+    DefineMap("mgdm3","The Boiler")
     DefineMap("horde1","Tower of the Apprentice")
     DefineMap("horde2","Frozen Court")
     DefineMap("horde3","The Foundry")
     DefineMap("horde4","The Hunt")
+
+    // Test maps
+    OverrideDefineMap("test/mals_combatbox","Mal's Combat Box")
+    OverrideDefineMap("test/test_characters","Big Box")
+    OverrideDefineMap("test/test_invis","Medium Box")
+    OverrideDefineMap("test/test_aiming","Small Box")
+    OverrideDefineMap("test/test_shadow","Shadow Arena")
+    OverrideDefineMap("test/test_button","Button Box")
+    OverrideDefineMap("test/test_barrierjump","Barrier Box")
+    OverrideDefineMap("test/test_door","Door Box")
+    OverrideDefineMap("test/test_laser","Laser Box")
+    OverrideDefineMap("test/test_obstacles","Obstacle Course")
+    OverrideDefineMap("test/test_powerup","Dark Box")
+    OverrideDefineMap("test/test_rockets","Low Box")
+    OverrideDefineMap("test/test_walkoffledge","Ledge Box")
 
     #endif
 

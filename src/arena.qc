@@ -9,16 +9,24 @@ void() AA_Arena_Init =
         AD_Curbot = 0;
         AD_Thebot = world;
 
+        // CK: Initialize this before we grab temp1
+        AA_Got_Change_Parms = 0;
+
+        // CK: Get this before we set up map parameters
+        ef = cvar("temp1");
+
         AA_Custom_Map = 0;
         AA_Idmap = 0;
         AA_Check_Map();
+        if (ef & 64) {
+                // dprint("Treating map as ID style due to temp1 settings\n");
+                AA_Idmap = 1;
+        }
         if (AA_Idmap) {
                 AA_Fook = 1;
         } else {
                 AA_Fook = 0;
         }
-
-        AA_Got_Change_Parms = 0;
 
         // CK: Must be done before AA_Set_Defaults() or else
         // it defaults to 0 (invalid mode) and sets teamplay to 4
@@ -58,7 +66,6 @@ void() AA_Arena_Init =
         e.nextthink = time + 1.0;
 
 //v1.1
-        ef = cvar("temp1");
         if (ef & 4)
                 AA_Pickup = 1;
         else
@@ -104,6 +111,7 @@ void() AA_Arena_Think =
         self.nextthink = time + 1;
 
         if (AA_Fook > 0 && AA_Fook < 5) {
+                // dprint("Removing stuff\n");
                 AA_Remove_Stuff();
                 AA_Fook = AA_Fook + 1;
         }
@@ -3378,11 +3386,12 @@ void(float which) AA_Warp_Command =
                 sprint(self, "No such map\n");
                 return;
         }
-        if (ef >= 8) {
+        // CK: Treat all the warp maps as custom (id style) maps
+        // if (ef >= 8) {
                 AA_Custom_Map = 1;
-        } else {
-                AA_Custom_Map = 0;
-        }
+        // } else {
+        //         AA_Custom_Map = 0;
+        // }
         changelevel(foos);
 };
 
@@ -3809,6 +3818,7 @@ void() AA_Get_Change_Parms =
         }
 
         if (parm11 & 64) {
+                // dprint("param11 has 64\n");
                 AA_Idmap = 1;
                 AA_Fook = 1;
         }

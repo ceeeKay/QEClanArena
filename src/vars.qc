@@ -23,19 +23,19 @@ string(float num) AA_Get_Map_For_Num =
         if (num == 1) return "dm2";
         if (num == 2) return "dm6";
         if (num == 3) return "dm3";
-        if (num == 4) return "e1m2";
-        if (num == 5) return "end";
-        if (num == 6) return "test/test_characters";
-        if (num == 7) return "test/mals_combatbox";
-        if (num == 8) return "horde1";
+        if (num == 4) return "end";
+        if (num == 5) return "horde1";
+        if (num == 6) return "horde2";
+        if (num == 7) return "horde3";
+        if (num == 8) return "horde4";
 // custom maps
-        if (num == 9) return "horde2";
-        if (num == 10) return "horde3";
-        if (num == 11) return "horde4";
-        if (num == 12) return "mgdm1";
-        if (num == 13) return "mgdm2";
-        if (num == 14) return "mgdm3";
-        if (num == 15) return "mgdm4";
+        if (num == 9) return "test/mals_combatbox";
+        if (num == 10) return "test/test_characters";
+        if (num == 11) return "test/test_invis";
+        if (num == 12) return "test/test_aiming";
+        if (num == 13) return "test/test_shadow";
+        if (num == 14) return "test/test_rockets";
+        if (num == 15) return "test/test_door";
         return(string_null);
 };
 
