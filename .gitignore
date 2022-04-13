@@ -1,4 +1,5 @@
-progs.*
+progs.dat
+progs.lno
 *.pak
 *.log
 *.zip
